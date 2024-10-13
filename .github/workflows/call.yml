@@ -2,7 +2,7 @@ name: Call
 on: pull_request
 jobs:
     call:
-        uses: ./.github/workflows/reusable-workflows
+        uses: ./.github/workflows/reusable-workflow.yml  # 再利用可能なワークフローのファイル名を修正
         with:
             pr-number: ${{ github.event.pull_request.number }}
         secrets:
@@ -15,5 +15,5 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - run: echo "Result> ${MESSAGE}"
-            env:
+              env:
                 MESSAGE: ${{ needs.call.outputs.message }}
